@@ -15,7 +15,6 @@ class UsersController extends Controller
         $rules = [
             'email' => 'required|email|unique:users',
             'password' => 'required',
-            'c_password' => 'required|same:password'
         ];
         $data = request()->all();
         $valid = Validator::make($data, $rules);
