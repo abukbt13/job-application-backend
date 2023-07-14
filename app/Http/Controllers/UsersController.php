@@ -29,14 +29,13 @@ class UsersController extends Controller
         $user->email = $data['email'];
         $user->password = Hash::make($request->password);
         $user->save();
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->email])) {
-            $token = $user->createToken('token')->plainTextToken;
-            return response([
-                'status' => 'success',
+         $token = $user->createToken('token')->plainTextToken;
+            return response()->json([
                 'token' => $token,
-                'user' => request()->user()
+                'user' => $user,
+                'status' => 'successfully registered'
             ]);
-        }
+
     }
     public function login(Request $request)
     {
