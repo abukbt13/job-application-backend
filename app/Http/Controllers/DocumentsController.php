@@ -23,6 +23,15 @@ class DocumentsController extends Controller
                 'message'=>$valid->errors()
             ]);
         }
+        $file=request()->file('file');
+        if($request->hasFile('file')){
+            $file_name= md5(rand(10,15));
+            $ext=strtolower($file->getClientOriginalExtension());
+            $file_full_name=$file_name.'.'.$ext;
+            $upload_path='public/images/';
+            $file_url=$upload_path.$file_full_name;
+            $file->move($upload_path,$file_full_name);
+        }
         $user_id=Auth::user()->id;
         $document=new Document();
         $document->name=$data['name'];
@@ -37,3 +46,6 @@ class DocumentsController extends Controller
         ]);
     }
 }
+
+
+

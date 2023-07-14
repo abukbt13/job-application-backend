@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\EmploymentExperiencesController;
 use App\Http\Controllers\OtherCoursesController;
 use App\Http\Controllers\PersonalInformationsController;
@@ -35,6 +36,8 @@ Route::post('addOtherCourse',[OtherCoursesController::class,'store']);
 Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'store']);
     //referees
 Route::post('addReferees',[RefereesController::class,'store']);
+    //documennts
+Route::post('addDocument',[DocumentsController::class,'store']);
 
 });
 Route::post('registerUser',[UsersController::class, 'store']);
