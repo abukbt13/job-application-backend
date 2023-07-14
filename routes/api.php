@@ -21,6 +21,8 @@ use App\Models\EmploymentExperience;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('registerUser',[UsersController::class, 'store']);
+Route::post('loginUser',[UsersController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -40,5 +42,4 @@ Route::post('addReferees',[RefereesController::class,'store']);
 Route::post('addDocument',[DocumentsController::class,'store']);
 
 });
-Route::post('registerUser',[UsersController::class, 'store']);
-Route::post('loginUser',[UsersController::class, 'login']);
+
