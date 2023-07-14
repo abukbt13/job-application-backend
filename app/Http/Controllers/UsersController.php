@@ -28,14 +28,14 @@ class UsersController extends Controller
         $user->email = $data['email'];
         $user->password = Hash::make($request->password);
         $user->save();
-
-        $token = $user->createToken('token')->plainTextToken;
-
-        return response()->json([
-            'token' => $token,
-            'status' => 'success',
-            'user' => $user
-        ]);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->email])) {
+            $token = $user->createToken('token')->plainTextToken;
+            return response([
+                'status' => 'success',
+                'token' => $token,
+                'user' => request()->user()
+            ]);
+        }
     }
     public function login(Request $request)
     {
@@ -52,7 +52,6 @@ class UsersController extends Controller
                 'errors' => $valid->errors()
             ]);
         }
-        else{
             $email = request('email');
             $password = request('password');
             $user = User::where('email', $email)->get()->first();
@@ -72,7 +71,5 @@ class UsersController extends Controller
                     'message' => 'Enter correct details',
                 ]);
             }
-        }
-
     }
 }
