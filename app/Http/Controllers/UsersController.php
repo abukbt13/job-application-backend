@@ -29,15 +29,18 @@ class UsersController extends Controller
         $user->email = $data['email'];
         $user->password = Hash::make($request->password);
         $user->save();
+
         if (Auth::attempt(['email' => $data['email'], 'password' => $data ['password']])) {
             $token = $user->createToken('token')->plainTextToken;
             return response([
                 'status'=>'success',
                 'access_token'=>$token,
                 'user'=>$user
+
             ]);
-        }
+
     }
+}
     public function login(Request $request)
     {
         $data = request()->all();
