@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DocumentsController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request,$id=null){
         $rules=[
             'name' => 'required',
             'description' => 'required',
@@ -33,13 +33,25 @@ class DocumentsController extends Controller
             $file->move($upload_path,$file_full_name);
         }
         $user_id=Auth::user()->id;
-        $document=new Document();
-        $document->name=$data['name'];
-        $document->description=$data['description'];
-        $document->file=$data['file'];
-        $document->user_id=$user_id;
-        $document->save();
-
+        $document = $id == null ?
+        Document::create([
+            'name'=>request('name'),
+            'description'=>request('description'),
+            'file'=>request('file'),
+            'user_id'=>$user_id
+        ])
+        : tap(Document::find($id))->update([
+            'name'=>request('name'),
+            'description'=>request('description'),
+            'file'=>request('file'),
+        ]);
+        // $user_id=Auth::user()->id;
+        // $document=new Document();
+        // $document->name=$data['name'];
+        // $document->description=$data['description'];
+        // $document->file=$data['file'];
+        // $document->user_id=$user_id;
+        // Document::where('id',$id)->first() ? $document->update() : $document->save();
         return response([
             'message'=>'Success',
             'data'=>$document

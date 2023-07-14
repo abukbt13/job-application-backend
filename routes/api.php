@@ -39,7 +39,7 @@ Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'st
     //referees
 Route::post('addReferees',[RefereesController::class,'store']);
     //documennts
-Route::post('addDocument',[DocumentsController::class,'store']);
+Route::post('addDocument/{id?}',[DocumentsController::class,'store']);
 
 });
 
