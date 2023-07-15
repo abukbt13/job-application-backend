@@ -42,7 +42,7 @@ Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'st
     //referees
 Route::post('addReferees',[RefereesController::class,'store']);
     //documennts
-Route::post('addDocument/{id?}',[DocumentsController::class,'store']);
+Route::post('addDocument',[DocumentsController::class,'store']);
 
 //apply vacancy
 Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);

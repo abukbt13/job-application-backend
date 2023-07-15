@@ -39,7 +39,8 @@ class PersonalInformationsController extends Controller
         $personalInfo->county=$data['county'];
         $personalInfo->constituency=$data['constituency'];
         $personalInfo->user_id=$user_id;
-        PersonalInformation::where('user_id',$user_id) ? $personalInfo->update() : $personalInfo->save();
+        $personalInfo->save();
+//        PersonalInformation::where('user_id',$user_id) ? $personalInfo->update() : $personalInfo->save();
         return response([
             'message'=>'Success',
             'data'=>$personalInfo
