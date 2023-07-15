@@ -6,6 +6,7 @@ use App\Http\Controllers\OtherCoursesController;
 use App\Http\Controllers\PersonalInformationsController;
 use App\Http\Controllers\ProfessionalQualificationsController;
 use App\Http\Controllers\RefereesController;
+use App\Http\Controllers\VacancyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
@@ -28,6 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware'=>['auth:sanctum']],function(){
+    //authentication
+    Route::get('user-auth',[UsersController::class,'auth']);
     //personal Information
 Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
     //professional information
@@ -40,6 +43,9 @@ Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'st
 Route::post('addReferees',[RefereesController::class,'store']);
     //documennts
 Route::post('addDocument/{id?}',[DocumentsController::class,'store']);
+
+//apply vacancy
+Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
 
 });
 

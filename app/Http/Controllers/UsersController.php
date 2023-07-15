@@ -72,4 +72,12 @@ class UsersController extends Controller
                 ]);
             }
     }
+
+    public function auth(){
+        if (Auth::check()) {
+            return response()->json(['authenticated' => true]);
+        } else {
+            return response()->json(['authenticated' => false]);
+        }
+    }
 }
