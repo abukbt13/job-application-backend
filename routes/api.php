@@ -23,7 +23,7 @@ use App\Models\EmploymentExperience;
 |
 */
 Route::post('registerUser',[UsersController::class, 'store']);
-Route::post('loginUser',[UsersController::class, 'login']);
+Route::post('auth/login',[UsersController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

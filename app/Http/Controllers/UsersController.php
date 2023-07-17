@@ -52,9 +52,8 @@ class UsersController extends Controller
         if (count($valid->errors())) {
             return response([
                 'status' => 'failed',
-                'message' => 'Enter correct details',
                 'errors' => $valid->errors()
-            ]);
+            ],422);
         }
             $email = request('email');
             $password = request('password');
