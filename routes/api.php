@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\EmploymentExperiencesController;
 use App\Http\Controllers\OtherCoursesController;
@@ -49,3 +50,4 @@ Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
 
 });
 
+Route::post('add_book',[BookController::class,'store']);
