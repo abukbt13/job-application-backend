@@ -25,6 +25,8 @@ use App\Models\EmploymentExperience;
 */
 Route::post('registerUser',[UsersController::class, 'store']);
 Route::post('loginUser',[UsersController::class, 'login']);
+Route::post('reset_password',[UsersController::class, 'reset_password']);
+Route::post('change_password/{id}',[UsersController::class, 'change_password']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
