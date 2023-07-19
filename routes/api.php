@@ -52,3 +52,4 @@ Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
 
 Route::post('add_book',[BookController::class,'store']);
 Route::get('show-book/{id}',[BookController::class,'show']);
+Route::get('show-all',[BookController::class,'show_all']);

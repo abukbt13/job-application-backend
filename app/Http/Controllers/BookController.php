@@ -59,9 +59,10 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function show_all(Book $book)
     {
-        //
+        $book=Book::all();
+        return($book);
     }
 
     /**
