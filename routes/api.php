@@ -24,9 +24,13 @@ use App\Models\EmploymentExperience;
 |
 */
 Route::post('registerUser',[UsersController::class, 'store']);
+
 Route::post('loginUser',[UsersController::class, 'login']);
 Route::post('reset_password',[UsersController::class, 'reset_password']);
 Route::post('change_password/{id}',[UsersController::class, 'change_password']);
+
+Route::post('auth/login',[UsersController::class, 'login']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -53,3 +57,5 @@ Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
 });
 
 Route::post('add_book',[BookController::class,'store']);
+Route::get('show-book/{id}',[BookController::class,'show']);
+Route::get('show-all',[BookController::class,'show_all']);
