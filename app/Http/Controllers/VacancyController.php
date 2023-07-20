@@ -25,7 +25,7 @@ class VacancyController extends Controller
           $vacancy->description=$request->description;
           $vacancy->save();
           return response([
-              'status'=>'Success',
+              'status'=>'success',
               'message'=>'You have successfully applied for a vacancy'
           ]);
       }
