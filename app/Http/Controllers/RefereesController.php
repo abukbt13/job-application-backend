@@ -38,4 +38,13 @@ class RefereesController extends Controller
             'data'=>$referee
         ]);
     }
+    public function list_referees(){
+        $user_id = Auth::user();
+        $user_id = $user_id->id;
+        $referees=Referee::where('user_id','=',$user_id)->get();
+        return response([
+            'status' => 'Success',
+            'data' => $referees
+        ]);
+    }
 }

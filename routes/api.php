@@ -48,11 +48,13 @@ Route::post('addOtherCourse',[OtherCoursesController::class,'store']);
 Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'store']);
     //referees
 Route::post('addReferees',[RefereesController::class,'store']);
+Route::get('list_referees',[RefereesController::class,'list_referees']);
     //documennts
 Route::post('addDocument',[DocumentsController::class,'store']);
 
 //apply vacancy
 Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
+Route::get('list_vacancies',[VacancyController::class,'list_vacancies']);
 
 });
 
