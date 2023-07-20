@@ -37,7 +37,7 @@ class UsersController extends Controller
             $token = $user->createToken('token')->plainTextToken;
             return response([
                 'status'=>'success',
-                'access_token'=>$token,
+                'token'=>$token,
                 'user'=>$user
 
             ]);
