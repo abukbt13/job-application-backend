@@ -37,6 +37,14 @@ class DocumentsController extends Controller
             'data'=>$document
         ]);
     }
+    public function list_documents(){
+        $user_id = Auth::user()->id;
+        $documents=Document::where('user_id','=',$user_id)->get();
+        return response([
+            'status' => 'Success',
+            'data' => $documents
+        ]);
+    }
 }
 
 

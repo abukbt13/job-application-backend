@@ -46,4 +46,13 @@ class PersonalInformationsController extends Controller
             'data'=>$personalInfo
         ]);
     }
+    public function list_personal_info(){
+        $user_id= Auth::user()->id;
+        $personalInfo= PersonalInformation::where('user_id',$user_id)->get();
+
+        return response([
+            'status'=>'success',
+            'data'=>$personalInfo
+        ]);
+    }
 }

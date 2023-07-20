@@ -40,4 +40,13 @@ class OtherCoursesController extends Controller
             'data'=>$otherCourse
         ]);
     }
+    public function list_otherCourses(){
+        $user_id=Auth::user()->id;
+        $otherCourses = OtherCourse::where('user_id',$user_id)->get();
+
+        return response([
+            'status'=>'success',
+            'data'=>$otherCourses
+        ]);
+    }
 }

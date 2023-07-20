@@ -41,4 +41,13 @@ class ProfessionalQualificationsController extends Controller
             'data'=>$professionalQualificaion
         ]);
     }
+    public function list_professional_qualificaion(){
+        $user_id = Auth::user()->id;
+        $professionalQualificaions= ProfessionalQualification::where('user_id', $user_id)->get();
+
+        return response([
+            'status'=>'success',
+            'data'=>$professionalQualificaions
+        ]);
+    }
 }

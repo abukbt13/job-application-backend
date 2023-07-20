@@ -40,4 +40,13 @@ class EmploymentExperiencesController extends Controller
             'data'=>$otherCourse
         ]);
     }
+    public function list_experience(){
+        $user_id=Auth::user()->id;
+        $experience = EmploymentExperience::where('user_id',$user_id)->get();
+
+        return response([
+            'status'=>'success',
+            'data'=>$experience
+        ]);
+    }
 }

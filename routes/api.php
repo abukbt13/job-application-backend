@@ -40,17 +40,22 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::get('user-auth',[UsersController::class,'auth']);
     //personal Information
 Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
+Route::get('list_personal_info',[PersonalInformationsController::class,'list_personal_info']);
     //professional information
 Route::post('addProfessional',[ProfessionalQualificationsController::class,'store']);
+Route::get('list_professional_qualificaion',[ProfessionalQualificationsController::class,'list_professional_qualificaion']);
     //other courses
 Route::post('addOtherCourse',[OtherCoursesController::class,'store']);
+Route::get('list_otherCourses',[OtherCoursesController::class,'list_otherCourses']);
     //employment experience
 Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'store']);
+Route::get('list_experience',[EmploymentExperiencesController::class,'list_experience']);
     //referees
 Route::post('addReferees',[RefereesController::class,'store']);
 Route::get('list_referees',[RefereesController::class,'list_referees']);
     //documennts
 Route::post('addDocument',[DocumentsController::class,'store']);
+Route::get('list_documents',[DocumentsController::class,'list_documents']);
 
 //apply vacancy
 Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
