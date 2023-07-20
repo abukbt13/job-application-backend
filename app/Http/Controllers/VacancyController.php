@@ -30,4 +30,13 @@ class VacancyController extends Controller
           ]);
       }
   }
+  public function list_vacancies(){
+    $user_id = Auth::user();
+    $user_id = $user_id->id;
+    $vacancies=Vacancy::where('user_id','=',$user_id)->get();
+    return response([
+        'status' => 'Success',
+        'data' => $vacancies
+    ]);
+}
 }
