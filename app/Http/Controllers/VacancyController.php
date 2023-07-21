@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,5 +39,5 @@ class VacancyController extends Controller
         'status' => 'Success',
         'data' => $vacancies
     ]);
-}
+    }
 }
