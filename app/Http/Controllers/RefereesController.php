@@ -44,7 +44,7 @@ class RefereesController extends Controller
         $referees=Referee::where('user_id','=',$user_id)->get();
         return response([
             'status' => 'Success',
-            'data' => $referees
+            'user' => $referees
         ]);
     }
 }

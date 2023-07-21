@@ -47,7 +47,7 @@ class ProfessionalQualificationsController extends Controller
 
         return response([
             'status'=>'success',
-            'data'=>$professionalQualificaions
+            'user'=>$professionalQualificaions
         ]);
     }
 }

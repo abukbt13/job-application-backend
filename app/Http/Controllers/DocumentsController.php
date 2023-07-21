@@ -42,7 +42,7 @@ class DocumentsController extends Controller
         $documents=Document::where('user_id','=',$user_id)->get();
         return response([
             'status' => 'Success',
-            'data' => $documents
+            'user' => $documents
         ]);
     }
 }

@@ -52,7 +52,7 @@ class PersonalInformationsController extends Controller
 
         return response([
             'status'=>'success',
-            'data'=>$personalInfo
+            'user'=>$personalInfo
         ]);
     }
 }

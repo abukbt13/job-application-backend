@@ -24,42 +24,51 @@ use App\Models\EmploymentExperience;
 |
 */
 Route::post('registerUser',[UsersController::class, 'store']);
-
 Route::post('loginUser',[UsersController::class, 'login']);
 Route::post('reset_password',[UsersController::class, 'reset_password']);
 Route::post('change_password/{id}',[UsersController::class, 'change_password']);
-
 Route::post('auth/login',[UsersController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware'=>['auth:sanctum']],function(){
-    //authentication
-    Route::get('user-auth',[UsersController::class,'auth']);
-    //personal Information
-Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
-Route::get('list_personal_info',[PersonalInformationsController::class,'list_personal_info']);
-    //professional information
-Route::post('addProfessional',[ProfessionalQualificationsController::class,'store']);
-Route::get('list_professional_qualificaion',[ProfessionalQualificationsController::class,'list_professional_qualificaion']);
-    //other courses
-Route::post('addOtherCourse',[OtherCoursesController::class,'store']);
-Route::get('list_otherCourses',[OtherCoursesController::class,'list_otherCourses']);
-    //employment experience
-Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'store']);
-Route::get('list_experience',[EmploymentExperiencesController::class,'list_experience']);
-    //referees
-Route::post('addReferees',[RefereesController::class,'store']);
-Route::get('list_referees',[RefereesController::class,'list_referees']);
-    //documennts
-Route::post('addDocument',[DocumentsController::class,'store']);
-Route::get('list_documents',[DocumentsController::class,'list_documents']);
 
-//apply vacancy
-Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
-Route::get('list_vacancies',[VacancyController::class,'list_vacancies']);
+    Route::group(['middleware'=>['auth:sanctum']],function(){
+        //authentication
+        Route::get('user-auth',[UsersController::class,'auth']);
+        //personal Information
+        Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
+        Route::get('list_personal_info',[PersonalInformationsController::class,'list_personal_info']);
+
+
+            //professional information
+        Route::post('addProfessional',[ProfessionalQualificationsController::class,'store']);
+        Route::get('list_professional_qualificaion',[ProfessionalQualificationsController::class,'list_professional_qualificaion']);
+
+            //other courses
+        Route::post('addOtherCourse',[OtherCoursesController::class,'store']);
+        Route::get('list_relevant_courses',[OtherCoursesController::class,'list_relevant_courses']);
+
+
+            //employment experience
+        Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'store']);
+        Route::get('list_experience',[EmploymentExperiencesController::class,'list_experience']);
+
+
+            //referees
+        Route::post('addReferees',[RefereesController::class,'store']);
+        Route::get('list_referees',[RefereesController::class,'list_referees']);
+
+
+            //documennts
+        Route::post('addDocument',[DocumentsController::class,'store']);
+        Route::get('list_documents',[DocumentsController::class,'list_documents']);
+
+
+         //apply vacancy
+        Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
+        Route::get('list_vacancies',[VacancyController::class,'list_vacancies']);
 
 });
 

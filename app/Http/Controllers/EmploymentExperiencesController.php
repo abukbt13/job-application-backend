@@ -46,7 +46,7 @@ class EmploymentExperiencesController extends Controller
 
         return response([
             'status'=>'success',
-            'data'=>$experience
+            'user'=>$experience
         ]);
     }
 }

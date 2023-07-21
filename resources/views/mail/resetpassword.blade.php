@@ -12,7 +12,7 @@
 <div class="body" style="margin: 1rem; width: 22rem;border: solid 2px grey">
     <h2 style="margin:1rem; background-color: pink;color: #3498db;text-align: center;">Shara solutions</h2>
     <p style="text-align: center;">Reset your password here .</p>
-    <a href="http://localhost:5173/finishreset/{{$data['otp']}}" >Click here to reset password</a>
+{{--    <a href="http://localhost:5173/finishreset/{{$data['otp']}}" >Click here to reset password</a>--}}
     <p style="text-align: center;">Your are receiving this email because you registered to our site using this email</p>
 </div>
 

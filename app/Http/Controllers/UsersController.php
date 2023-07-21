@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\User;
 use App\Mail\resetPassword;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -88,9 +87,11 @@ class UsersController extends Controller
     }
     public function reset_password(Request $request){
         $OTP=rand();
+
         $email=$request->email;
         $user=User::where('email','=',$email)->get()->first();
-        $user->otp=$OTP;
+        $user->otp=99999;
+
         $user->update();
         $data = [
             'subject' => 'Reset Password message',
