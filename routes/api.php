@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\EmploymentExperiencesController;
@@ -39,6 +40,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         Route::get('user-auth',[UsersController::class,'auth']);
         //personal Information
         Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
+        Route::post('update_personalInfo',[PersonalInformationsController::class,'update_personalInfo']);
         Route::get('list_personal_info',[PersonalInformationsController::class,'list_personal_info']);
 
 
@@ -69,6 +71,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
          //apply vacancy
         Route::post('add_vacancy',[VacancyController::class,'add_vacancy']);
         Route::get('list_vacancies',[VacancyController::class,'list_vacancies']);
+
+        Route::get('list_applied',[UsersController::class,'list_applied']);
+
+        Route::get('list_users_applied', [AdminsController::class,'list_users_applied']);
 
 });
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\resetPassword;
+use Exception;
 use App\Models\User;
+use App\Mail\resetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
