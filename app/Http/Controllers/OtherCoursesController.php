@@ -33,12 +33,22 @@ class OtherCoursesController extends Controller
         $otherCourse->startDate=$data['startDate'];
         $otherCourse->endDate=$data['endDate'];
         $otherCourse->user_id=$user_id;
-        $otherCourse->save();
-
-        return response([
-            'message'=>'Success',
-            'data'=>$otherCourse
-        ]);
+        $courses_count=OtherCourse::where('user_id',$user_id)->count();
+        if($courses_count>4){
+            return response([
+                'status'=>'fail',
+                'message'=>'You can not add more four courses',
+                'data'=>$otherCourse
+            ],422);
+        }
+        else{
+            $otherCourse->save();
+            return response([
+                'status'=>'success',
+                'message'=>'You can not add more four courses',
+                'data'=>$otherCourse
+            ],200);
+        }
     }
     public function list_relevant_courses(){
         $user_id=Auth::user()->id;

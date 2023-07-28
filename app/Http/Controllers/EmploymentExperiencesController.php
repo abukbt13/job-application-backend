@@ -40,6 +40,37 @@ class EmploymentExperiencesController extends Controller
             'data'=>$otherCourse
         ]);
     }
+    public function update_experience(Request $request){
+        $rules=[
+            'organisation' => 'required',
+            'position' => 'required',
+            'workNature' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
+        ];
+        $data=request()->all();
+        $valid=Validator::make($data,$rules);
+        if(count($valid->errors())){
+            return response([
+                'status'=>'failed',
+                'message'=>$valid->errors()
+            ]);
+        }
+        $user_id=Auth::user()->id;
+        $other = EmploymentExperience::where('user_id',$user_id)->get()->first();
+        $other->organisation=$data['organisation'];
+        $other->position=$data['position'];
+        $other->workNature=$data['workNature'];
+        $other->startDate=$data['startDate'];
+        $other->endDate=$data['endDate'];
+        $other->update();
+
+        return response([
+            'status'=>'success',
+            'message'=>'You have updated successfully',
+            'data'=>$other
+        ]);
+    }
     public function list_experience(){
         $user_id=Auth::user()->id;
         $experience = EmploymentExperience::where('user_id',$user_id)->get();
