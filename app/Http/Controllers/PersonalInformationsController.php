@@ -40,12 +40,50 @@ class PersonalInformationsController extends Controller
         $personalInfo->constituency=$data['constituency'];
         $personalInfo->user_id=$user_id;
         $personalInfo->save();
-//        PersonalInformation::where('user_id',$user_id) ? $personalInfo->update() : $personalInfo->save();
+
         return response([
-            'message'=>'Success',
-            'data'=>$personalInfo
+            'status'=>'success',
+            'user'=>$personalInfo
         ]);
+      
+    } 
+    public function update_personalInfo(Request $request){
+        $rules=[
+            'idNo' => 'required|unique:personal_information',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'county' => 'required',
+            'constituency' => 'required',
+        ];
+        $data=request()->all();
+        $valid=Validator::make($data,$rules);
+        if(count($valid->errors())){
+            return response([
+                'status'=>'failed',
+                'message'=>$valid->errors()
+            ]);
+        }
+        $user_id=Auth::user()->id;
+        $personalInfo= PersonalInformation::where('user_id',$user_id)->get()->first();
+        $personalInfo->idNo=$data['idNo'];
+        $personalInfo->firstName=$data['firstName'];
+        $personalInfo->lastName=$data['lastName'];
+        $personalInfo->phone=$data['phone'];
+        $personalInfo->gender=$data['gender'];
+        $personalInfo->address=$data['address'];
+        $personalInfo->county=$data['county'];
+        $personalInfo->constituency=$data['constituency'];
+        $personalInfo->update();
+        return response([
+            'status'=>'success',
+            'user'=>$personalInfo
+        ]);
+      
     }
+
     public function list_personal_info(){
         $user_id= Auth::user()->id;
         $personalInfo= PersonalInformation::where('user_id',$user_id)->get();

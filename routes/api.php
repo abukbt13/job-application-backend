@@ -40,6 +40,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         Route::get('user-auth',[UsersController::class,'auth']);
         //personal Information
         Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
+        Route::post('update_personalInfo',[PersonalInformationsController::class,'update_personalInfo']);
         Route::get('list_personal_info',[PersonalInformationsController::class,'list_personal_info']);
 
 
