@@ -31,7 +31,7 @@ class UsersController extends Controller
         $user->email = $data['email'];
         $user->password = Hash::make($request->password);
         $user->save();
-
+        storelog('Sign in', $user,'Linux');
         if (Auth::attempt(['email' => $data['email'], 'password' => $data ['password']])) {
             $token = $user->createToken('token')->plainTextToken;
             return response([
