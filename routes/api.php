@@ -46,6 +46,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
             //professional information
         Route::post('addProfessional',[ProfessionalQualificationsController::class,'store']);
+        Route::post('update_ProfessionalQualification',[ProfessionalQualificationsController::class,'update_ProfessionalQualification']);
         Route::get('list_professional_qualificaion',[ProfessionalQualificationsController::class,'list_professional_qualificaion']);
 
             //other courses
