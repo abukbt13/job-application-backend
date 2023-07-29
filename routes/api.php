@@ -56,6 +56,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
             //employment experience
         Route::post('addEmplomentExperience',[EmploymentExperiencesController::class,'store']);
+        Route::post('update_experience',[EmploymentExperiencesController::class,'update_experience']);
         Route::get('list_experience',[EmploymentExperiencesController::class,'list_experience']);
 
 
