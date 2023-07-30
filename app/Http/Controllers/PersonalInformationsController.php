@@ -93,4 +93,5 @@ class PersonalInformationsController extends Controller
             'user'=>$personalInfo
         ]);
     }
+
 }

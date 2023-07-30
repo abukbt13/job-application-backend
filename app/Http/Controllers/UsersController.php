@@ -134,4 +134,15 @@ class UsersController extends Controller
           'message'=>'Password changed successfully'
         ]);
     }
+    public function updateStatus(){
+        $user_id=Auth::user()->id;
+        $user = User::find($user_id); 
+        $user->status = 'applied';
+        $user->save();
+
+        return response([
+            'status'=>'success',
+            'message'=>'Job applied successfully'
+        ]);
+    }
 }

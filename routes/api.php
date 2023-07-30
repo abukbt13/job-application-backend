@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         Route::post('addPersonalInfo',[PersonalInformationsController::class,'store']);
         Route::post('update_personalInfo',[PersonalInformationsController::class,'update_personalInfo']);
         Route::get('list_personal_info',[PersonalInformationsController::class,'list_personal_info']);
+        Route::post('update-user-status',[PersonalInformationsController::class,'updateUserStatus']);
 
 
             //professional information
@@ -75,10 +76,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         Route::get('list_vacancies',[VacancyController::class,'list_vacancies']);
 
         Route::get('list_applied',[UsersController::class,'list_applied']);
+        Route::post('updateStatus',[UsersController::class,'updateStatus']);
 
         Route::get('list_users_applied', [AdminsController::class,'list_users_applied']);
-
-});
+    });
 
 Route::post('add_book',[BookController::class,'store']);
 Route::get('show-book/{id}',[BookController::class,'show']);
