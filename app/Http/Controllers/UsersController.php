@@ -135,10 +135,11 @@ class UsersController extends Controller
         ]);
     }
     public function updateStatus(){
-        $user_id=Auth::user()->id;
-        $user = User::find($user_id); 
+        $user_id=Auth::user();
+        $user_id=$user_id->id;
+        $user = User::find($user_id);
         $user->status = 'applied';
-        $user->save();
+        $user->update();
 
         return response([
             'status'=>'success',

@@ -76,7 +76,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         Route::get('list_vacancies',[VacancyController::class,'list_vacancies']);
 
         Route::get('list_applied',[UsersController::class,'list_applied']);
-        Route::post('updateStatus',[UsersController::class,'updateStatus']);
+        Route::get('updateStatus',[UsersController::class,'updateStatus']);
 
         Route::get('list_users_applied', [AdminsController::class,'list_users_applied']);
     });

@@ -60,7 +60,7 @@ class EmploymentExperiencesController extends Controller
         $other = EmploymentExperience::where('user_id',$user_id)->get()->first();
         $other->organisation=$data['organisation'];
         $other->position=$data['position'];
-        $other->workNature=$data['workNature'];it
+        $other->workNature=$data['workNature'];
         $other->startDate=$data['startDate'];
         $other->endDate=$data['endDate'];
         $other->update();
