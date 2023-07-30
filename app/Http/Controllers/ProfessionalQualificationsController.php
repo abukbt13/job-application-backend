@@ -41,6 +41,38 @@ class ProfessionalQualificationsController extends Controller
             'data'=>$professionalQualificaion
         ]);
     }
+    public function update_ProfessionalQualification(Request $request){
+        $rules=[
+            'institution' => 'required',
+            'level' => 'required',
+            'course' => 'required',
+            'award' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
+        ];
+        $data=request()->all();
+        $valid=Validator::make($data,$rules);
+        if(count($valid->errors())){
+            return response([
+                'status'=>'failed',
+                'message'=>$valid->errors()
+            ]);
+        }
+        $user_id=Auth::user()->id;
+        $professionalQualificaion= ProfessionalQualification::where('user_id',$user_id)->get()->first();
+        $professionalQualificaion->institution=$data['institution'];
+        $professionalQualificaion->level=$data['level'];
+        $professionalQualificaion->course=$data['course'];
+        $professionalQualificaion->award=$data['award'];
+        $professionalQualificaion->startDate=$data['startDate'];
+        $professionalQualificaion->endDate=$data['endDate'];
+        $professionalQualificaion->update();
+        return response([
+            'status'=>'success',
+            'user'=>$professionalQualificaion
+        ]);
+      
+    }
     public function list_professional_qualificaion(){
         $user_id = Auth::user()->id;
         $professionalQualificaions= ProfessionalQualification::where('user_id', $user_id)->get();
