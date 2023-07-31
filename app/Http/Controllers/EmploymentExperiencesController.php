@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmploymentExperience;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +27,9 @@ class EmploymentExperiencesController extends Controller
             ]);
         }
         $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $user->progress=5;
+        $user->update();
         $otherCourse=new EmploymentExperience();
         $otherCourse->organisation=$data['organisation'];
         $otherCourse->position=$data['position'];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OtherCourse;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +27,9 @@ class OtherCoursesController extends Controller
             ]);
         }
         $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $user->progress=4;
+        $user->update();
         $otherCourse=new OtherCourse();
         $otherCourse->institution=$data['institution'];
         $otherCourse->course=$data['course'];

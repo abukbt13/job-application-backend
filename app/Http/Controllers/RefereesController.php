@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Referee;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +26,9 @@ class RefereesController extends Controller
             ]);
         }
         $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $user->progress=6;
+        $user->update();
         $referee=new Referee();
         $referee->fullName=$data['fullName'];
         $referee->occupation=$data['occupation'];

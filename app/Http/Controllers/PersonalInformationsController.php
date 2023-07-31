@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PersonalInformation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -29,6 +30,9 @@ class PersonalInformationsController extends Controller
             ]);
         }
         $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $user->progress=2;
+        $user->update();
         $personalInfo=new PersonalInformation();
         $personalInfo->idNo=$data['idNo'];
         $personalInfo->firstName=$data['firstName'];
@@ -45,8 +49,8 @@ class PersonalInformationsController extends Controller
             'status'=>'success',
             'user'=>$personalInfo
         ]);
-      
-    } 
+
+    }
     public function update_personalInfo(Request $request){
         $rules=[
             'idNo' => 'required|unique:personal_information',
@@ -81,7 +85,7 @@ class PersonalInformationsController extends Controller
             'status'=>'success',
             'user'=>$personalInfo
         ]);
-      
+
     }
 
     public function list_personal_info(){

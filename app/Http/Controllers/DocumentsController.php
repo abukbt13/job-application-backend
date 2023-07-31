@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -25,11 +26,15 @@ class DocumentsController extends Controller
         }
         $path = $request->file('file')->store('public/Documents');
         $filename = basename($path);
+        $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $user->progress=7;
+        $user->update();
         $document = new Document();
         $document->name = $request->name;
         $document->description = $request->description;
         $document->file = $filename;
-        $document->user_id = Auth::user()->id;
+        $document->user_id =$user_id;
         $document->save();
 
        return response([
