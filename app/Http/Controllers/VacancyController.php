@@ -22,6 +22,9 @@ class VacancyController extends Controller
       else{
           $vacancy=new Vacancy();
           $vacancy->user_id=$user_id;
+          $user=User::find($user_id);
+          $user->progress=1;
+          $user->update();
           $vacancy->name=$request->name;
           $vacancy->description=$request->description;
           $vacancy->save();

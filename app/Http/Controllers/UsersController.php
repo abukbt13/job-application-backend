@@ -68,7 +68,7 @@ class UsersController extends Controller
                 return response([
                     'status' => 'success',
                     'token' => $token,
-                    'user' => request()->user()
+                    'user' => $user
                 ]);
             }
             else{
